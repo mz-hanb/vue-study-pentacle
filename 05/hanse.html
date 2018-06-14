@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  :root {
+    --select-color: red;
+  }
+  
+.is-active {
+  background-color: var(--select-color);
+}
+
+  </style>
+</head>
+<body>
+  <h1>계산서</h1>
+  <section class="service-app">
+    <h2>서비스 관련 계산서</h2>
+    <table>
+      <caption>services</caption>
+      <tbody>
+        <tr v-for="service in services">
+          <td v-bind:class="{ 'is-active' : service.isActive }" v-on:click="selectService(service)" role="button">{{ service.name }} {{ service.price | currency }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>total: {{ totalPrice | currency }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+
+    <script src="https://kr.vuejs.org/js/vue.js"></script> 
+    <script>
+    new Vue({
+      el: '.service-app',
+      data: {
+        services: [
+          {
+            name: 'Web Development',
+            price: 300,
+            isActive: false
+          },
+          {
+            name: 'Design',
+            price: 200,
+            isActive: false
+          },
+          {
+            name: 'Integ',
+            price: 250,
+            isActive: false
+          },
+          {
+            name: 'Training',
+            price: 220,
+            isActive: false
+          }
+        ]
+      },
+      computed: {
+        totalPrice() {
+          let total = 0;
+          this.services.forEach(function(service) {
+
+            if (service.isActive) {
+              total += service.price;
+            }
+
+          
+          
+          });
+
+            return total;
+        }
+      },
+      filters: {
+        currency(price) {
+          return `$ ${price.toFixed(2)}`;
+        }
+      },
+      methods: {
+        selectService(service) {
+          service.isActive = !service.isActive;
+        }
+      }
+    });
+    </script>
+</body>
+</html>
