@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>order form</title>
+  <!-- 
+    > todo
+    add format filter 
+   -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <div id="order-form">
+    <h1>Services</h1>
+    <ul class="services">
+      <li v-for="service in services" :class="{info: true, service, selected: service.selected}" @click="setTotal(service)">
+        <span class="name">{{service.name}}</span>
+        <span class="price">${{service.price}}</span>
+      </li>
+    </ul>
+    <p class="info total-price">
+        <span class="name">Total</span>
+        <span class="price">${{totalPrice}}</span>
+    </p>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>  
+  <script>
+    var orderForm = new Vue({
+      el: '#order-form', 
+      data: {
+        services: [
+          {name: 'Web Development', price: 300, selected: false},
+          {name: 'Design', price: 400, selected: false},
+          {name: 'Integrantion', price: 250, selected: false},
+          {name: 'Training', price: 220, selected: false}
+        ], 
+        totalPrice: 0,
+      },
+      methods: {
+        setTotal: function(selectObj){
+          selectObj.selected = !selectObj.selected;
+          if( selectObj.selected ){
+            this.totalPrice += selectObj.price;
+          }else{
+            this.totalPrice -= selectObj.price;
+          }
+        }
+      }
+    })
+  </script>  
+</body>
+</html>

@@ -1,0 +1,2 @@
+#inline-editor{position:relative;width:600px;margin:50px auto;text-align:center;border:1px solid eee}#inline-editor>[class$="-win"]{position:absolute;left:50%;transform:translateX(-50%);font-weight:bold}#inline-editor .edit-win{display:inline-block;border:10px solid #5D91AD}#inline-editor .edit-win input{text-align:center;padding:5px}#inline-editor .view-win{top:80px;color:#6F7E86;cursor:pointer}#inline-editor .view-win .texts{margin-left:10px}
+/*# sourceMappingURL=style.css.map */

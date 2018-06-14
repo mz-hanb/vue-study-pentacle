@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 
+    이벤트 수식어: https://kr.vuejs.org/v2/guide/events.html
+   -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div id="navigation" class="navigation">
+    <ul class="menus">
+      <li v-for="(menu, idx) in menus" :class="{menu, selected: menu.selected}" @click.prevent="setCurrent(idx)">
+        <a :href="menu.url">{{menu.name | uppercase}}</a>    
+      </li>
+    </ul>    
+    <p class="select-view">
+      You choose <span v-if="current" class="select-name">{{current.name | uppercase}}</span>
+    </p>
+
+  </div>
+  <script src="https://unpkg.com/vue"></script>  
+  <script>
+    var nav = new Vue({
+      el: '#navigation', 
+      data: {
+        menus: [
+          {name: 'home', selected: false, url: ''},
+          {name: 'projects', selected: false, url: ''},
+          {name: 'services', selected: false, url: ''},
+          {name: 'contact', selected: false, url: ''}
+        ],
+        current: null
+      }, 
+      filters: {
+        uppercase: function(v){
+          return v.toUpperCase();
+        }
+      },
+      created: function(){
+        this.setCurrent(0);
+      },
+      methods: {
+        setCurrent: function(tgIdx){
+          if( this.current ){
+            this.current.selected = false;
+            this.current = null;
+          }          
+          this.current = this.menus[tgIdx];    
+          this.current.selected = true;      
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+#inline-editor{
+  position: relative;
+  width: 600px;
+  margin: 50px auto;
+  
+  text-align: center;
+  border: 1px solid eee;
+
+  &>[class$="-win"]{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    font-weight: bold;        
+  }
+
+  .edit-win{    
+    display: inline-block;
+    border: 10px solid #5D91AD;
+    input{            
+      text-align: center;
+      padding: 5px;
+    }
+  }
+
+  .view-win{    
+    top: 80px;    
+    color: #6F7E86;
+    cursor: pointer;
+    .texts{
+      margin-left: 10px;
+    }
+  }
+
+}

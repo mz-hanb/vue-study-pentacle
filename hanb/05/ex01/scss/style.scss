@@ -1,0 +1,49 @@
+*{
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navigation{
+  width: 600px;
+  margin: 50px auto;
+  .menus{
+    width: 100%;    
+    display: table;
+    
+    font-weight: bold;
+  }
+  .menu{
+    background: #588EAB;
+    text-align: center;
+    display: table-cell;
+    padding: 15px; 
+    border: 1px solid #eee;
+    
+    a{
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &.selected{
+      background: #D4527C;
+    }
+    
+  }
+  .select-view{
+    margin-top: 20px;
+    text-align: center;
+
+    .select-name{
+      background: #C0D2DB;
+
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;        
+
+    }
+    
+    
+  }
+
+}

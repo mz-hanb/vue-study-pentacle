@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>inline editor: </title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div id="inline-editor">
+    <div class="edit-win" v-show="onShowEditWin">
+      <input type="text" class="texts" v-model="inputTxts">
+    </div>
+    <div class="view-win" @click="onShowEditWin = !onShowEditWin">
+        <i class="fas fa-pencil-alt"></i><span class="texts">{{inputTxts}}</span>
+    </div>
+  </div>
+
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script src="https://unpkg.com/vue"></script>  
+  <script>
+    var inlineEditor = new Vue({
+      el: '#inline-editor',
+      data: {
+        onShowEditWin: false,
+        inputTxts: 'Edit me!!!'
+      }, 
+      methods: {
+        check: function(){
+          console.log( 'click ');
+        }
+      }
+    })
+  </script>  
+</body>
+</html>

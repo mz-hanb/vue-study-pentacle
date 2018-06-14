@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue> markdown editor</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<!-- 
+학습내용
+- data bind
+- event
+- markdown compiler
+  https://github.com/markedjs/marked
+
+- lodash: debounce
+  https://hyunseob.github.io/2016/04/24/throttle-and-debounce/
+ -->
+<body>
+
+  <div id="editor" class="editor">
+    <textarea class="section section-edit" :value="userMarkdown" @input="update" ></textarea>
+    <div class="section section-preview" v-html="compileMarkdown"></div>
+  </div>
+
+  <!-- markdown compiler -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- lodash -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script> 
+  <!-- vue -->
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    var editor = new Vue({
+      el: '#editor', 
+      data: {
+        userMarkdown: '# hello',
+      }, 
+      computed: {
+        compileMarkdown: function(){
+          return marked(this.userMarkdown);
+        }
+      }, 
+      methods: {
+        update: _.debounce(function(e){
+          this.userMarkdown = e.target.value;
+        }, 300)
+      }      
+    })
+  </script>  
+</body>
+</html>
