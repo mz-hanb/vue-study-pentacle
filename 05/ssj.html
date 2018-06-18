@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  nav a {
+    display:inline-block;
+    padding: 0 10px;
+  }
+  .is-active {
+    border: 2px solid blue;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+      <nav>
+        <a v-for="menu in menuList" :class="{'is-active' : menu.isActive}" @click="toggleActive(menu)" href="#" >{{ menu.name }}</a>
+      </nav>
+      <p>{{activeMenu}}</p>
+  </div>
+  <script src="https://unpkg.com/vue"></script>  
+  <script>
+  var navi = new Vue({
+    el: '#app',
+    data: {
+      menuList: [
+        { name: 'home', isActive:true },
+        { name: 'projects', isActive:false },
+        { name: 'services', isActive:false },
+        { name: 'contact', isActive:false }
+      ],
+      activeMenu: 'home'
+    },
+    methods: {
+      toggleActive(menu){
+        this.activeMenu = menu.name
+        this.menuList.forEach(function(el){
+          el.isActive = false
+        })
+        menu.isActive = true;
+      }
+    }
+  });
+  </script>
+
+
+</body>
+</html>
