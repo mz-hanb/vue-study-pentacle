@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ex4</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  
+  <div id="app">
+    <p class="user-search">
+      <input type="text" v-model="search">
+    </p>
+    <p>{{search}}</p>
+    <ul>
+      <li v-for="item in itemsSearch" class="item">
+        <img :src="item.url" alt="">
+        <span class="desc">{{item.desc}}</span>
+      </li>
+    </ul>
+  </div>
+  <!-- end || app -->
+
+  <!-- vue -->
+  <script src="https://unpkg.com/vue"></script>  
+  <script>
+    var app = new Vue({
+      el: '#app', 
+      data: {
+        search: '', 
+        items: [
+        {desc: 'What You Need To Know About CSS Variables', url: 'https://tutorialzine.com/media/2016/03/css-variables.jpg'},
+          {desc: 'Freebie: 4 Great Looking Pricing Tables', url: 'https://tutorialzine.com/media/2016/02/great-looking-pricing-tables.jpg'},
+          {desc: '20 Interesting JavaScript and CSS Libraries for February 2016', url: 'https://tutorialzine.com/media/2016/02/interesting-resources-february.jpg'},
+          {desc: 'Quick Tip: The Easiest Way To Make Responsive Headers', url: 'https://tutorialzine.com/media/2016/02/quick-tip-responsive-headers.png'},
+          {desc: 'Learn SQL In 20 Minutes', url: 'https://tutorialzine.com/media/2016/01/learn-sql-20-minutes.png'},
+          {desc: 'Creating Your First Desktop App With HTML, JS and Electron', url: 'https://tutorialzine.com/media/2015/12/creating-your-first-desktop-app-with-electron.png'},
+        ],        
+      },
+      computed: {
+        itemsSearch: function(){
+          var self = this;
+          return this.items.filter(function(ele){
+            if(  ele.desc.toLowerCase().indexOf( self.search.toLowerCase()) != -1 ) return ele;
+          })
+        }
+      },
+      methods: {        
+      }
+    })
+  </script>
+
+
+</body>
+</html>

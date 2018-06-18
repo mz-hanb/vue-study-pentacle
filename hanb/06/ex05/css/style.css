@@ -1,0 +1,2 @@
+*{margin:0;padding:0;box-sizing:border-box}li{list-style:none}#app{width:600px;margin:0 auto}#app nav{padding:20px;background:#588CA6}#app nav button{padding:5px;border:none;background:#4C7E97;color:#fff}#app nav button.on{background:#B1428A}#app .items{margin-top:30px}#app .items .item{display:inline-block;border-bottom:1px solid #eee;width:100%;padding:10px}#app .items .item img{vertical-align:top;width:20%;height:auto}#app .items.grid .item{width:50%;padding:5px;border:none}#app .items.grid img{width:100%}
+/*# sourceMappingURL=style.css.map */

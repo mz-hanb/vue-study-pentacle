@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <div id="app">
+    <nav>
+      <button type="button" @click="setMode('list')">list</button>
+      <button type="button" @click="setMode('grid')">grid</button>
+    </nav>
+    <ul class="items" :class=[mode]>
+      <li v-for="item in items" class="item">
+        <img :src="item.url" alt="">
+        <span class="desc" v-if="mode === 'list'">{{item.desc}}</span>
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>  
+  <script>
+    var app = new Vue({
+      el: '#app', 
+      data: {
+        mode: 'list',
+        items: [
+        {desc: 'What You Need To Know About CSS Variables', url: 'https://tutorialzine.com/media/2016/03/css-variables.jpg'},
+          {desc: 'Freebie: 4 Great Looking Pricing Tables', url: 'https://tutorialzine.com/media/2016/02/great-looking-pricing-tables.jpg'},
+          {desc: '20 Interesting JavaScript and CSS Libraries for February 2016', url: 'https://tutorialzine.com/media/2016/02/interesting-resources-february.jpg'},
+          {desc: 'Quick Tip: The Easiest Way To Make Responsive Headers', url: 'https://tutorialzine.com/media/2016/02/quick-tip-responsive-headers.png'},
+          {desc: 'Learn SQL In 20 Minutes', url: 'https://tutorialzine.com/media/2016/01/learn-sql-20-minutes.png'},
+          {desc: 'Creating Your First Desktop App With HTML, JS and Electron', url: 'https://tutorialzine.com/media/2015/12/creating-your-first-desktop-app-with-electron.png'},
+        ], 
+      },     
+      methods: {
+        setMode: function(stMode){
+          this.mode = stMode;
+        }
+      }
+    })
+  </script>
+  
+</body>
+</html>
