@@ -11,10 +11,10 @@
 
   <div id="app">
     <nav>
-      <button type="button" @click="setMode('list')">list</button>
-      <button type="button" @click="setMode('grid')">grid</button>
+      <button type="button" :class="{on: mode=='list'}" @click="setMode('list')">list</button>
+      <button type="button" :class="{on: mode=='grid'}" @click="setMode('grid')">grid</button>
     </nav>
-    <ul class="items" :class=[mode]>
+    <ul class="items" :class="mode">
       <li v-for="item in items" class="item">
         <img :src="item.url" alt="">
         <span class="desc" v-if="mode === 'list'">{{item.desc}}</span>
